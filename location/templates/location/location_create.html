@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Location</title>
+</head>
+<body>
+    <h1>Create Location</h1>
+    <form method="post">
+        {% csrf_token %}
+        Owner:
+        <select name="owner" required>
+            {% for owner in owners %}
+                <option value="{{ owner.id }}">{{ owner.user.username }}</option>
+            {% endfor %}
+        </select><br>
+        Title: <input type="text" name="title" required><br>
+        Address: <input type="text" name="address" required><br>
+        Price per Night: <input type="number" step="0.01" name="price_per_night" required><br>
+        Available: <input type="checkbox" name="available" checked><br>
+        Description: <textarea name="description"></textarea><br>
+        <button type="submit">Create</button>
+    </form>
+    <a href="{% url 'location_list' %}">Back to Locations</a>
+</body>
+</html>

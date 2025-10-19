@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Renters</title>
+</head>
+<body>
+    <h1>Renters</h1>
+    <a href="{% url 'renter_create' %}">Create New Renter</a>
+    <ul>
+        {% for renter in renters %}
+            <li>{{ renter.user.username }} - {{ renter.phone }}</li>
+        {% empty %}
+            <li>No renters found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

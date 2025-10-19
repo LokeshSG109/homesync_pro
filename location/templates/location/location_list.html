@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Locations</title>
+</head>
+<body>
+    <h1>Locations</h1>
+    <a href="{% url 'location_create' %}">Create New Location</a>
+    <ul>
+        {% for location in locations %}
+            <li>
+                {{ location.title }} - {{ location.address }} - ${{ location.price_per_night }} - {% if location.available %}Available{% else %}Not Available{% endif %}
+            </li>
+        {% empty %}
+            <li>No locations found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

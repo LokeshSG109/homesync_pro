@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Renter</title>
+</head>
+<body>
+    <h1>Create Renter</h1>
+    <form method="post">
+        {% csrf_token %}
+        Username: <input type="text" name="username" required><br>
+        Password: <input type="password" name="password" required><br>
+        Phone: <input type="text" name="phone" required><br>
+        <button type="submit">Create</button>
+    </form>
+    <a href="{% url 'renter_list' %}">Back to Renters</a>
+</body>
+</html>

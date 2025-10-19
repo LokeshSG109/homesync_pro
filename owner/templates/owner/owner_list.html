@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Owners</title>
+</head>
+<body>
+    <h1>Owners</h1>
+    <a href="{% url 'owner_create' %}">Create New Owner</a>
+    <ul>
+        {% for owner in owners %}
+            <li>{{ owner.user.username }} - {{ owner.phone }}</li>
+        {% empty %}
+            <li>No owners found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
