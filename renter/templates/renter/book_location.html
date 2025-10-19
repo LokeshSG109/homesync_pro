@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><title>Book Location</title></head>
+<body>
+    <h1>Book: {{ location.title }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        Renter:
+        <select name="renter" required>
+            {% for renter in renters %}
+                <option value="{{ renter.id }}">{{ renter.user.username }}</option>
+            {% endfor %}
+        </select><br>
+        Start Date: <input type="date" name="start_date" required><br>
+        End Date: <input type="date" name="end_date" required><br>
+        <button type="submit">Book</button>
+    </form>
+    <a href="{% url 'location_list' %}">Back to Locations</a>
+</body>
+</html>

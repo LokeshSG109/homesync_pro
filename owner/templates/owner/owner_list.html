@@ -15,3 +15,11 @@
     </ul>
 </body>
 </html>
+
+{% for owner in owners %}
+    <li>
+        {{ owner.user.username }} - {{ owner.phone }}
+        <a href="{% url 'owner_update' owner.pk %}">Edit</a>
+        <a href="{% url 'owner_delete' owner.pk %}">Delete</a>
+    </li>
+{% endfor %}

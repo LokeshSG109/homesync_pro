@@ -17,3 +17,13 @@
     </ul>
 </body>
 </html>
+
+{% for location in locations %}
+    <li>
+        {{ location.title }} - {{ location.address }} - ${{ location.price_per_night }} - 
+        {% if location.available %}Available{% else %}Not Available{% endif %}
+        <a href="{% url 'location_update' location.pk %}">Edit</a>
+        <a href="{% url 'location_delete' location.pk %}">Delete</a>
+        <a href="{% url 'book_location' location.pk %}">Book</a>
+    </li>
+{% endfor %}

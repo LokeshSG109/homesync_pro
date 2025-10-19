@@ -15,3 +15,11 @@
     </ul>
 </body>
 </html>
+
+{% for renter in renters %}
+    <li>
+        {{ renter.user.username }} - {{ renter.phone }}
+        <a href="{% url 'renter_update' renter.pk %}">Edit</a>
+        <a href="{% url 'renter_delete' renter.pk %}">Delete</a>
+    </li>
+{% endfor %}

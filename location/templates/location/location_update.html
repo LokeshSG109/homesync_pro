@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head><title>Update Location</title></head>
+<body>
+    <h1>Update Location: {{ location.title }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        Owner:
+        <select name="owner" required>
+            {% for owner in owners %}
+                <option value="{{ owner.id }}" {% if owner.id == location.owner.id %}selected{% endif %}>{{ owner.user.username }}</option>
+            {% endfor %}
+        </select><br>
+        Title: <input type="text" name="title" value="{{ location.title }}" required><br>
+        Address: <input type="text" name="address" value="{{ location.address }}" required><br>
+        Price per Night: <input type="number" step="0.01" name="price_per_night" value="{{ location.price_per_night }}" required><br>
+        Available: <input type="checkbox" name="available" {% if location.available %}checked{% endif %}><br>
+        Description: <textarea name="description">{{ location.description }}</textarea><br>
+        <button type="submit">Update</button>
+    </form>
+    <a href="{% url 'location_list' %}">Back to Locations</a>
+</body>
+</html>

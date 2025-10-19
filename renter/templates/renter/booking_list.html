@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><title>Bookings</title></head>
+<body>
+    <h1>Bookings</h1>
+    <ul>
+        {% for booking in bookings %}
+            <li>
+                {{ booking.renter.user.username }} booked {{ booking.location.title }} from {{ booking.start_date }} to {{ booking.end_date }} ({{ booking.status }})
+            </li>
+        {% empty %}
+            <li>No bookings found.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'location_list' %}">Back to Locations</a>
+</body>
+</html>
